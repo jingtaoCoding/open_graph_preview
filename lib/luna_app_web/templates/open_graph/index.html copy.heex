@@ -1,0 +1,28 @@
+<h1>Listing Open graphs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Image url</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for open_graph <- @open_graphs do %>
+    <tr>
+      <td><%= open_graph.url %></td>
+      <td><%= open_graph.image_url %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.open_graph_path(@conn, :show, open_graph) %></span>
+        <span><%= link "Edit", to: Routes.open_graph_path(@conn, :edit, open_graph) %></span>
+        <span><%= link "Delete", to: Routes.open_graph_path(@conn, :delete, open_graph), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%!-- <span><%= link "New Open graph", to: Routes.open_graph_path(@conn, :new) %></span> --%>

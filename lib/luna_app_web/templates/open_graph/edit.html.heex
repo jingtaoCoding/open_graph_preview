@@ -1,0 +1,5 @@
+<h1>Edit Open graph</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.open_graph_path(@conn, :update, @open_graph)) %>
+
+<span><%= link "Back", to: Routes.open_graph_path(@conn, :index) %></span>

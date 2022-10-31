@@ -1,0 +1,18 @@
+<h1>Show Open graph</h1>
+
+<ul>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @open_graph.url %>
+  </li>
+
+  <li>
+    <strong>Image url:</strong>
+    <%= @open_graph.image_url %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.open_graph_path(@conn, :edit, @open_graph) %></span> |
+<span><%= link "Back", to: Routes.open_graph_path(@conn, :index) %></span>

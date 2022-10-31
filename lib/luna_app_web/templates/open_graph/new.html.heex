@@ -1,0 +1,6 @@
+<h1>Open Graph Preview</h1>
+
+<%!-- <h1> <%= @conn.assigns[:graph][:url] %> </h1> --%>
+<%= render "form.html", Map.put(assigns, :action, Routes.open_graph_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.open_graph_path(@conn, :index) %></span>
