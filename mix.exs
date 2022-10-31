@@ -20,7 +20,7 @@ defmodule LunaApp.MixProject do
   def application do
     [
       mod: {LunaApp.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :open_graph]
     ]
   end
 
@@ -40,7 +40,7 @@ defmodule LunaApp.MixProject do
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.16.0"},
-      {:floki, ">= 0.30.0", only: :test},
+      {:floki, ">= 0.30.0", override: true},
       {:phoenix_live_dashboard, "~> 0.5"},
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
@@ -48,6 +48,8 @@ defmodule LunaApp.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
+      {:opengraph_parser, "~> 0.4.2"},
+      {:open_graph, "~> 0.0.5"},
       {:plug_cowboy, "~> 2.5"}
     ]
   end

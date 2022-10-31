@@ -3,9 +3,9 @@ defmodule LunaAppWeb.OpenGraphControllerTest do
 
   import LunaApp.OpenGraphsFixtures
 
-  @create_attrs %{image_url: "some image_url", url: "some url"}
-  @update_attrs %{image_url: "some updated image_url", url: "some updated url"}
-  @invalid_attrs %{image_url: nil, url: nil}
+  @create_attrs %{image: "some image", url: "some url"}
+  @update_attrs %{image: "some updated image", url: "some updated url"}
+  @invalid_attrs %{image: nil, url: nil}
 
   describe "index" do
     test "lists all open_graphs", %{conn: conn} do
@@ -57,7 +57,7 @@ defmodule LunaAppWeb.OpenGraphControllerTest do
       assert redirected_to(conn) == Routes.open_graph_path(conn, :show, open_graph)
 
       conn = get(conn, Routes.open_graph_path(conn, :show, open_graph))
-      assert html_response(conn, 200) =~ "some updated image_url"
+      assert html_response(conn, 200) =~ "some updated image"
     end
 
     test "renders errors when data is invalid", %{conn: conn, open_graph: open_graph} do

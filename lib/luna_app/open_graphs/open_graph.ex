@@ -4,7 +4,7 @@ defmodule LunaApp.OpenGraphs.OpenGraph do
 
   schema "open_graphs" do
     field :url, :string
-    field :image_url, :string
+    field :image, :string
     field :title, :string, default: ""
     field :type, :string, default: "website"
     field :status, :string, default: "pending"
@@ -14,9 +14,10 @@ defmodule LunaApp.OpenGraphs.OpenGraph do
   end
 
   @doc false
-  @changeset_params [:id, :url, :image_url, :title, :type, :status, :metadata]
+  @changeset_params [:id, :url, :image, :title, :type, :status, :metadata]
   @allowed_status [
     "pending",
+    "processing",
     "ready",
     "error"
   ]

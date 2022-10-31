@@ -15,7 +15,7 @@ alias LunaApp.OpenGraphs
 {:ok, _graph} =
   OpenGraphs.create_open_graph(%{
     url: "https://www.getluna.com/",
-    image_url: "https://socialsharepreview.com/images/social-share-preview-og.jpg",
+    image: "https://socialsharepreview.com/images/social-share-preview-og.jpg",
     title: "Social Share Preview – Check social media link previews",
     status: "ready",
     type: "web",

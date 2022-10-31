@@ -11,7 +11,7 @@ defmodule LunaApp.OpenGraphsFixtures do
     {:ok, open_graph} =
       attrs
       |> Enum.into(%{
-        image_url: "some image_url",
+        image: "some image",
         url: "some url"
       })
       |> LunaApp.OpenGraphs.create_open_graph()

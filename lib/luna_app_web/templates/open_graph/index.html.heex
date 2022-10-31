@@ -16,7 +16,7 @@
 <%= for open_graph <- @open_graphs do %>
     <tr>
       <td><%= open_graph.url %></td>
-      <td><%= open_graph.image_url %></td>
+      <td><%= open_graph.image %></td>
 
       <td>
         <span><%= link "Show", to: Routes.open_graph_path(@conn, :show, open_graph) %></span>

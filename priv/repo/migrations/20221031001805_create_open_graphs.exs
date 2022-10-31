@@ -5,7 +5,7 @@ defmodule LunaApp.Repo.Migrations.CreateOpenGraphs do
     create table(:open_graphs, primary_key: false) do
       add :id, :bigserial, primary_key: true
       add :url, :string
-      add :image_url, :string
+      add :image, :string
       add :title, :string
       add :type, :string, default: "website"
       add :status, :string, default: "pending"

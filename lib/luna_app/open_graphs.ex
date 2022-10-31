@@ -7,6 +7,7 @@ defmodule LunaApp.OpenGraphs do
   alias LunaApp.Repo
 
   alias LunaApp.OpenGraphs.OpenGraph
+  alias LunaApp.OpenGraphs.Parser
 
   @doc """
   Gets a single open_graph.
@@ -115,5 +116,12 @@ defmodule LunaApp.OpenGraphs do
   """
   def change_open_graph(%OpenGraph{} = open_graph, attrs \\ %{}) do
     OpenGraph.changeset(open_graph, attrs)
+  end
+
+  def async_fetch(%OpenGraph{status: "pending"} = open_graph) do
+    update_open_graph(open_graph, %{status: "processing"})
+
+    # TODO: make this as a job or in another process 
+    Parser.fetch(open_graph)
   end
 end
