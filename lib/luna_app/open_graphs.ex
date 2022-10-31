@@ -28,24 +28,6 @@ defmodule LunaApp.OpenGraphs do
   def get_open_graph_by_url!(url), do: Repo.get_by!(OpenGraph, url: url)
 
   @doc """
-  Creates a open_graph.
-
-  ## Examples
-
-      iex> create_open_graph(%{field: value})
-      {:ok, %OpenGraph{}}
-
-      iex> create_open_graph(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_open_graph(attrs \\ %{}) do
-    %OpenGraph{}
-    |> OpenGraph.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
   Create if not recorded found by url
   or return the existing one
   """
@@ -89,22 +71,6 @@ defmodule LunaApp.OpenGraphs do
   end
 
   @doc """
-  Deletes a open_graph.
-
-  ## Examples
-
-      iex> delete_open_graph(open_graph)
-      {:ok, %OpenGraph{}}
-
-      iex> delete_open_graph(open_graph)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_open_graph(%OpenGraph{} = open_graph) do
-    Repo.delete(open_graph)
-  end
-
-  @doc """
   Returns an `%Ecto.Changeset{}` for tracking open_graph changes.
 
   ## Examples
@@ -117,11 +83,13 @@ defmodule LunaApp.OpenGraphs do
     OpenGraph.changeset(open_graph, attrs)
   end
 
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking open_graph changes.
+
+  """
   def async_fetch(%OpenGraph{status: "pending"} = open_graph) do
     update_open_graph(open_graph, %{status: "processing"})
-
-    # TODO: make this as a job or in another process 
     Task.async(fn -> Parser.fetch(open_graph) end)
-    IO.inspect("DONE!!")
+    {:ok, open_graph}
   end
 end

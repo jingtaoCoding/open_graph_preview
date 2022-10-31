@@ -15,10 +15,11 @@
   </div>
 
   <%= if g = @conn.assigns[:open_graph] do %>
-    <%= if g.status == "pending" do %>
+    <%= if g.status == "pending" || g.status == "processing" do %>
     <p> in progress ... 
     please check this later <p>
     <% end %>
+    
     <%= if g.status == "ready" do %>
     <div>
       <h1> Preview </h1>

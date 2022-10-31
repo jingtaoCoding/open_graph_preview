@@ -15,40 +15,20 @@ defmodule LunaAppWeb.OpenGraphController do
     case OpenGraphs.upsert_open_graph(%{url: sanitized}) do
       {:ok, %OpenGraph{status: "pending"} = open_graph} ->
         OpenGraphs.async_fetch(open_graph)
+        render_create(conn, %{open_graph: open_graph})
 
-        conn
-        |> put_flash(:info, "Data is under processing ...")
-        |> assign(:open_graph, open_graph)
-        |> render("new.html",
-          changeset: OpenGraph.changeset(%OpenGraph{}, Map.from_struct(open_graph)),
-          open_graph: open_graph
-        )
-
-      {:ok, %OpenGraph{status: "processing"} = open_graph} ->
-        conn
-        |> put_flash(:info, "Data is under processing ...")
-        |> assign(:open_graph, open_graph)
-        |> render("new.html",
-          changeset: OpenGraph.changeset(%OpenGraph{}, Map.from_struct(open_graph)),
-          open_graph: open_graph
-        )
-
-      {:ok, %OpenGraph{status: "ready"} = open_graph} ->
-        conn
-        |> assign(:open_graph, open_graph)
-        |> render("new.html",
-          changeset: OpenGraph.changeset(%OpenGraph{}, Map.from_struct(open_graph)),
-          open_graph: open_graph
-        )
-
-      {:ok, %OpenGraph{status: "error"} = open_graph} ->
-        conn
-        |> assign(:open_graph, open_graph)
-        |> render("new.html",
-          changeset: OpenGraph.changeset(%OpenGraph{}, Map.from_struct(open_graph)),
-          open_graph: open_graph
-        )
+      {:ok, open_graph} ->
+        render_create(conn, %{open_graph: open_graph})
     end
+  end
+
+  defp render_create(conn, %{open_graph: open_graph}) do
+    conn
+    |> assign(:open_graph, open_graph)
+    |> render("new.html",
+      changeset: OpenGraphs.change_open_graph(%OpenGraph{}, Map.from_struct(open_graph)),
+      open_graph: open_graph
+    )
   end
 
   defp sanitize_url(url) do
