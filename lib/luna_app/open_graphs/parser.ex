@@ -3,6 +3,8 @@ defmodule LunaApp.OpenGraphs.Parser do
   alias LunaApp.OpenGraphs.OpenGraph, as: Graph
 
   def fetch(%Graph{url: url} = graph) do
+    # Process.sleep(3000)
+
     case OpenGraph.fetch(url) do
       {:ok, og} ->
         raw_params = Map.from_struct(og)

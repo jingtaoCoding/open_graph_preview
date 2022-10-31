@@ -67,7 +67,6 @@ defmodule LunaApp.OpenGraphs do
         returning: true
       )
 
-    IO.inspect(graph)
     {:ok, graph}
   end
 
@@ -122,6 +121,7 @@ defmodule LunaApp.OpenGraphs do
     update_open_graph(open_graph, %{status: "processing"})
 
     # TODO: make this as a job or in another process 
-    Parser.fetch(open_graph)
+    Task.async(fn -> Parser.fetch(open_graph) end)
+    IO.inspect("DONE!!")
   end
 end
