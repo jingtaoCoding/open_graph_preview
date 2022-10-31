@@ -15,10 +15,10 @@
   </div>
 
   <%= if g = @conn.assigns[:open_graph] do %>
-   <%= if g.status == "pending" do %>
-   <p> in progress ... 
-   please check this later <p>
-   <% end %>
+    <%= if g.status == "pending" do %>
+    <p> in progress ... 
+    please check this later <p>
+    <% end %>
     <%= if g.status == "ready" do %>
     <div>
       <h1> Preview </h1>
@@ -29,6 +29,13 @@
         <li><b>Type</b>: <%= g.type %></li>
         <%!-- <li><b>imag_url</b>: <%= g.image %></li> --%>
       </ul>
+    </div>
+    <% end %>
+    <%= if g.status == "error" do %>
+    <div style="background-color:Tomato;">
+      <p > <b> Something went Wrong!</b> </p>
+      <p> Please make sure the website support OG meta data or the url is correct!</p>
+      <p> Clean up DB & try it again! </p>
     </div>
     <% end %>
   <% end %>

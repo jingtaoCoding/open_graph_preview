@@ -17,8 +17,7 @@ defmodule LunaAppWeb.Router do
   scope "/", LunaAppWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
-
+    get "/", OpenGraphController, :index
     resources "/open_graphs", OpenGraphController, only: [:index, :create]
   end
 

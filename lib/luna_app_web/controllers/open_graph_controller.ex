@@ -40,6 +40,14 @@ defmodule LunaAppWeb.OpenGraphController do
           changeset: OpenGraph.changeset(%OpenGraph{}, Map.from_struct(open_graph)),
           open_graph: open_graph
         )
+
+      {:ok, %OpenGraph{status: "error"} = open_graph} ->
+        conn
+        |> assign(:open_graph, open_graph)
+        |> render("new.html",
+          changeset: OpenGraph.changeset(%OpenGraph{}, Map.from_struct(open_graph)),
+          open_graph: open_graph
+        )
     end
   end
 

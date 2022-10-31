@@ -13,20 +13,22 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ## To test
 
 Go to page [`http://localhost:4000/open_graphs`](http://localhost:4000/open_graphs), the landing page will be as below
-  ![image](doc/preview.png)
+      ![image](doc/preview.png)
 
 1) input a test website (eg: <https://www.getluna.com/>), which has been processed before (seed data in local DB), all meta data related to this website's can be shown, with `image` being shown as an image.
 
-  ![image](doc/preview_1.png)
+    ![image](doc/preview_1.png)
 
 2) input another test website, a new task will be created to parsing the meta data and update its information to DB once parsing is done. UI will display the following without waiting for task to complete.
-3)
+
     ![image](doc/preview_2.png)
 
-4) when the data is processed, the 2nd time the user query the same url (eg: <https://wwww.google.com> ), the correct preview page will be rendered.
-5)
+3) when the data is processed, the 2nd time the user query the same url (eg: <https://wwww.google.com> ), the correct preview page will be rendered.
 
- ![image](doc/preview_3.png)
+    ![image](doc/preview_3.png)
+
+4) when the 'url' doesn't have the correct og metadata, and cannot be parser correctly, error information should be displayed, eg:  
+   ![image](doc/preview_error.png)
 
 NOTE: The UI won't change automatically when DB is updated. A User can manually refresh the page to get the updated preview.
 
@@ -37,5 +39,7 @@ NOTE: The UI won't change automatically when DB is updated. A User can manually 
 *
 
 ## TODOS
-- unit tests 
-- code clean-up 
+
+* unit tests
+
+* code clean-up
