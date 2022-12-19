@@ -25,3 +25,20 @@ alias LunaApp.OpenGraphs
       viewport: "width=device-width, initial-scale=1"
     }
   })
+
+{:ok, _graph} =
+  OpenGraphs.create_open_graph(%{
+    url: "https://ogp.me/",
+    image: "https://ogp.me/logo.png",
+    title: "Open Graph protocol",
+    status: "ready",
+    type: "website",
+    metadata: %{
+      url: "https://ogp.me/",
+      image: "https://ogp.me/logo.png",
+      type: "website",
+      title: "Open Graph protocol",
+      description:
+        "The Open Graph protocol enables any web page to become a rich object in a social graph."
+    }
+  })
