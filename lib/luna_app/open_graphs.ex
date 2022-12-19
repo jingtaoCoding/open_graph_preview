@@ -28,6 +28,24 @@ defmodule LunaApp.OpenGraphs do
   def get_open_graph_by_url!(url), do: Repo.get_by!(OpenGraph, url: url)
 
   @doc """
+  Creates a open_graph.
+
+  ## Examples
+
+      iex> create_open_graph(%{field: value})
+      {:ok, %OpenGraph{}}
+
+      iex> create_open_graph(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_open_graph(attrs \\ %{}) do
+    %OpenGraph{}
+    |> OpenGraph.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
   Create if not recorded found by url
   or return the existing one
   """
