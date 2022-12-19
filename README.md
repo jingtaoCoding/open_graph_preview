@@ -1,4 +1,4 @@
-# LunaApp
+# Open Graph preview
 
 To start your Phoenix server:
 
