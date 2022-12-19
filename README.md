@@ -1,10 +1,17 @@
 # Open Graph preview
 
+This app is to show a preview of an open graph. Please refer to [open graph protocol](https://ogp.me/) for more information. It completes these tasks:
+
+- Parse the open graph information based on the input url, and save the parsed information to local database.
+- Show preview of the open graph, based on information in the database.
+
+## To setup
+
 To start your Phoenix server:
 
-* Install dependencies with `mix deps.get`, `mix deps.compile`
-* Create and migrate your database with `mix ecto.setup`
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+- Install dependencies with `mix deps.get`, `mix deps.compile`
+- Create and migrate your database with `mix ecto.setup`
+- Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
@@ -32,14 +39,14 @@ Go to page [`http://localhost:4000/open_graphs`](http://localhost:4000/open_grap
 
 NOTE: The UI won't change automatically when DB is updated. A User can manually refresh the page to get the updated preview.
 
-* the async task can be quickly within 1 or two seconds
-* Before the task is done, there won't be multiple tasks created. New tasks can only be created when in "pending" status (not in other status)
-* it can be done with js/react to query refresh the page if needed.
-* or use pub/sub method
+- the async task can be quickly within 1 or two seconds
+- Before the task is done, there won't be multiple tasks created. New tasks can only be created when in "pending" status (not in other status)
+- it can be done with js/react to query refresh the page if needed.
+- or use pub/sub method
 *
 
 ## Todo
 
-* unit tests
+- unit tests
 
-* code clean-up
+- code clean-up
